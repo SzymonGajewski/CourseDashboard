@@ -1,6 +1,7 @@
 #include "User.hpp"
 #include <iostream>
 #include <iomanip>
+#include <sstream>
 
 User::User(const std::string &name,
            const std::string &nick,
@@ -9,11 +10,21 @@ User::User(const std::string &name,
            const std::string &firecode,
            const std::string &email,
            const std::string &password)
-    : name_(name), nick_(nick), group_(group), gitHub_(gitHub), firecode_(firecode), email_(email), password_(password)
+    : name_(name)
+    , nick_(nick)
+    , group_(group)
+    , gitHub_(gitHub)
+    , firecode_(firecode)
+    , email_(email)
+    , password_(password)
 {}
 
 User::User(nlohmann::json userJson)
-    : name_(userJson["name"].get<std::string>()), nick_(userJson["nick"].get<std::string>()), group_(userJson["group"].get<Group>()), gitHub_(userJson["gitHub"].get<std::string>()), firecode_(userJson["firecod"].get<std::string>())
+    : name_(userJson["name"].get<std::string>())
+    , nick_(userJson["nick"].get<std::string>())
+    , group_(userJson["group"].get<Group>())
+    , gitHub_(userJson["gitHub"].get<std::string>())
+    , firecode_(userJson["firecod"].get<std::string>())
 {}
 
 std::string User::toString() const
