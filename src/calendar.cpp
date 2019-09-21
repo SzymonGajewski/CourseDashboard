@@ -34,6 +34,11 @@ Calendar::Calendar()
     
     MapLesson.insert(std::pair<std::string,std::vector<Lesson>> ("evening",{}) );
     MapLesson.insert(std::pair<std::string,std::vector<Lesson>> ("weekend",{}) );
+    add_lesson("weekend","Lekcja 2");
+    add_lesson("weekend","Lekcja 3");
+    add_lesson("evening","Lekcja 3");
+    prinftlesson("weekend");
+    prinftlesson("evening");
     
 }
 void Calendar::add_lesson(std::string group, std::string sub)
@@ -46,12 +51,16 @@ void Calendar::add_lesson(std::string group, std::string sub)
 }
  void Calendar::prinftlesson(std::string group)
  {
+     std::cout<<"DSADAS";
      auto it = MapLesson.find(group);
      if(it!=MapLesson.end()) 
      {
          for(auto el : it->second )
          {
              std::cout<<el.get_Subject();
+             std::cout<<std::endl<<std::endl;
+             el.list_of_students();         
+            
          }
      }
  }
