@@ -7,8 +7,10 @@
 void CourseDashboard::addUserToLesson()
 {
     
-    calendar_.addUserToLesson(userHandler_ );
+    calendar_.addUserToLesson(userHandler_);
 }
+
+
 void CourseDashboard::createUser(int sz)
 {
     for(int i=0;i<sz;i++)

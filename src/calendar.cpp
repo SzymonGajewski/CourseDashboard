@@ -5,16 +5,35 @@
 #include <algorithm>
 #include "lesson.hpp"
 #include "UserHandler.hpp"
+#include <string>
 void Calendar::addUserToLesson(UserHandler & us)
 {
-    
-}
+    std::string str1= "wekeend";
+    std::string str2= "evening";
+    for(auto& [group, Lesson] : MapLesson)
+    {
+        if(group==str1)
+        {
+            for(auto& lesson : Lesson)
+            {
+                lesson.addStudentsToLesson(us,1);
+            }
+        }
+         if(group==str2)
+        {
+            for(auto& lesson : Lesson)
+            {
+                lesson.addStudentsToLesson(us,2);
+            }
+        }
 
+    }
+}
 Calendar::Calendar()
 {
     
-    MapLesson.insert(std::pair<std::string,std::vector<Lesson>> ("wieczorowa",{}) );
-    MapLesson.insert(std::pair<std::string,std::vector<Lesson>> ("weekendowa",{}) );
+    MapLesson.insert(std::pair<std::string,std::vector<Lesson>> ("evening",{}) );
+    MapLesson.insert(std::pair<std::string,std::vector<Lesson>> ("weekend",{}) );
     
 }
 void Calendar::add_lesson(std::string group, std::string sub)

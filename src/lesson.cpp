@@ -3,9 +3,8 @@
 #include "time.hpp"
 #include <iostream>
 #include "User.hpp"
+#include "UserHandler.hpp"
 #include "lesson.hpp"
-
-
  Lesson::Lesson(int seconds,
         int minutes,
         int hours,
@@ -21,34 +20,15 @@ std::string Lesson::get_Subject()
 {
     return subject_;
 }
-/*
-User::User(const std::string &name,
-           const std::string &nick,
-           Group group,
-           const std::string &gitHub,
-           const std::string &firecode,
-           const std::string &email,
-           const std::string &password)
-*/
 
-
-
-void Lesson::add_students(int sz)                               
-{
-    for(int i=0;i<sz;i++)
+void Lesson::addStudentsToLesson(UserHandler & us, int str)                               
+{   
+    auto ptr= us.returnPtr();
+    for(auto it =ptr->begin();it!=ptr->end();it++)
     {
-    //    users_.push_back(  User ("Rys", "nick", User::Group::weekend, "github", "firecode"));
-
-    //    users_.push_back(  User ("Krzys", "nick", User::Group::evening, "github", "firecode"));
+        if(it->getNumberGroup()==str)  users_ptr_.push_back(&*it);
     }
-    for(auto it = users_.begin();it != users_.end(); it++)
-    {
-        users_ptr_.push_back(&*it);
-    }
-    for(auto el: users_ptr_)
-    {
-        std::cout<<(el->getNick());
-    }
+    
 }
 void Lesson::list_of_students()
 {

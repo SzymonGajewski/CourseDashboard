@@ -3,6 +3,12 @@
 #include <iomanip>
 #include <sstream>
 
+int User::getNumberGroup()
+{
+    if(group_==User::Group::evening) return 1;
+    else return 2;
+}
+
 User::User(const std::string &name,
            const std::string &nick,
            Group group,

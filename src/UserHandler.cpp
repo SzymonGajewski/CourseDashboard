@@ -2,8 +2,17 @@
 #include <stdexcept>
 #include <iostream>
 #include <algorithm>
+#include <vector>
+ std::vector<User> * UserHandler::returnPtr()
+ {
+     std::vector<User> * ptr = &users_;
+     return ptr;
 
-
+ }
+void UserHandler::addUserToLesson(UserHandler &us)
+{
+    
+}
 void UserHandler::showAll() const
 {
     for (auto &user : users_)

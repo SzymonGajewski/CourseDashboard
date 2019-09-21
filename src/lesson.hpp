@@ -3,15 +3,14 @@
 #include <string>
 #include <vector>
 #include <memory>
-#include "User.hpp"
-
+#include "UserHandler.hpp"
 
 class Lesson
 {
 public:
     Lesson() = default;
     Lesson(int,int,int,int,int,int,std::string);
-    void add_students(int);
+    void addStudentsToLesson(UserHandler &, int);
     void list_of_students();
     std::string get_Subject();
 private:
