@@ -6,6 +6,8 @@
 int main()
 {
     CourseDashboard cdb;
+    cdb.createUser(6);
+    cdb.showUser();
     std::cout << "Course Dashboard" << std::endl;
 
     cdb.saveToFile("userDatabase.txt");

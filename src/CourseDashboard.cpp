@@ -2,8 +2,26 @@
 #include "FileHandler.hpp"
 #include "Utility.hpp"
 #include "AuthenticationProvider.hpp"
+#include <string>
 
+void CourseDashboard::addUserToLesson()
+{
+    
+    calendar_.addUserToLesson(userHandler_ );
+}
+void CourseDashboard::createUser(int sz)
+{
+    for(int i=0;i<sz;i++)
+    {
+    userHandler_.createUser(User ("Rys", "nick", User::Group::weekend, "github", "firecode"));
+    userHandler_.createUser(User ("Krzys", "nick", User::Group::evening, "github", "firecode"));
+    }
+}
 
+void CourseDashboard::showUser()
+{
+    userHandler_.showAll();
+}
 void CourseDashboard::loadFromFile(const std::string& pathTofile)
 {
     FileHandler fileHandler(pathTofile);

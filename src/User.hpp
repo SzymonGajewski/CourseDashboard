@@ -7,8 +7,8 @@ class User
 public:
     enum class Group
     {
-        weekend,
-        evening
+        weekend=1,
+        evening=2
     };
 
     User(const std::string & name,

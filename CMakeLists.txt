@@ -41,10 +41,22 @@ project(CourseDashboard)
 
 set(SRC_LIST
     src/AuthenticationProvider.cpp
+    src/AuthenticationProvider.hpp
     src/CourseDashboard.cpp
+    src/CourseDashboard.hpp
     src/User.cpp
+    src/User.hpp
     src/UserHandler.cpp
+    src/UserHandler.hpp
+    src/FileHandler.hpp
     src/FileHandler.cpp
+    src/time.hpp
+    src/time.cpp
+    src/main.cpp
+    src/lesson.hpp
+    src/lesson.cpp
+    src/calendar.hpp
+    src/calendar.cpp
 )
 
 include_directories(external)
