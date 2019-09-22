@@ -14,6 +14,7 @@ public:
 
     void addScoreKeys(const std::vector<std::string> &scoreKeys);
     void updateUserScoreByNick(std::string nick, std::string key, int points);
+    void showScoreTableByNick(std::string nick);
 
 
 private:

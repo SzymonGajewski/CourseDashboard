@@ -39,6 +39,8 @@ public:
     void updateUserScore(std::string key, int poits);
     void createScoreTable(std::vector<std::string> scoreKeys);
 
+    std::string scoreTableToString() const;
+
 private:
     std::string name_;
     std::string nick_;

@@ -91,3 +91,22 @@ void User::createScoreTable(std::vector<std::string> scoreKeys)
         scoreTable_.emplace(e, 0);
     }
 }
+
+std::string User::scoreTableToString() const
+{
+    std::stringstream ss;
+    ss << std::left;
+    for (auto &e : scoreTable_)
+    {
+        ss << std::setw(std::max(e.first.length(), std::to_string(e.second).length()) + 2)
+           << e.first;
+    }
+    ss << std::endl;
+    for (auto &e : scoreTable_)
+    {
+        ss << std::setw(std::max(e.first.length(), std::to_string(e.second).length()) + 2)
+           << e.second;
+    }
+    ss << std::endl;
+    return ss.str();
+}

@@ -107,3 +107,14 @@ bool UserHandler::isKeyExisting(std::string key)
 {
     return std::find(scoreKeys_.begin(), scoreKeys_.end(), key) != scoreKeys_.end();
 }
+
+bool UserHandler::showScoreTableByNick(std::string nick)
+{
+    User* user = retriveUserByNick(nick);
+    if(user != nullptr)
+    {
+        std::cout << user->scoreTableToString();
+        return true;
+    }
+    return false;
+}

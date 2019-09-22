@@ -28,5 +28,10 @@ int main()
     cdb.updateUserScoreByNick("test","Lesson 1", 20);
     cdb.updateUserScoreByNick("Beth","test", 500);
 
+    cdb.showScoreTableByNick("Laura");
+    cdb.showScoreTableByNick("Beth");
+    cdb.showScoreTableByNick("test");
+
+
     return 0;
 }

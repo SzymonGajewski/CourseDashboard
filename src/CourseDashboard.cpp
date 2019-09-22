@@ -49,3 +49,11 @@ void CourseDashboard::updateUserScoreByNick(std::string nick, std::string key, i
                   << key <<  " points:" << points << "\n" ;
     }
 }
+
+void CourseDashboard::showScoreTableByNick(std::string nick)
+{
+    if (!userHandler_.showScoreTableByNick(nick))
+    {
+        std::cerr << "User: " << nick << " doesn't exist.\n";
+    }
+}
