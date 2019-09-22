@@ -16,8 +16,15 @@ public:
                     std::string_view github = "",
                     std::string_view firecode = "");
     void clearUserDatabase();
-    Users& getUserDatabase();  
+    Users& getUserDatabase();
+    
+    void addScoreKey(std::string key);
+    void createUsersScoreTables();
+    bool updateUserScoreByNick(std::string nick, std::string key, int points);
 
 private:
     std::vector<User> users_;
+    std::vector<std::string> scoreKeys_;
+
+    bool isKeyExisting(std::string key);
 };

@@ -2,6 +2,7 @@
 #include "FileHandler.hpp"
 #include "Utility.hpp"
 #include "AuthenticationProvider.hpp"
+#include <iostream>
 
 
 void CourseDashboard::loadFromFile(const std::string& pathTofile)
@@ -9,6 +10,7 @@ void CourseDashboard::loadFromFile(const std::string& pathTofile)
     FileHandler fileHandler(pathTofile);
     auto userFromFile = fileHandler.read();
     userHandler_.getUserDatabase()  = convertToArray(userFromFile);
+    userHandler_.createUsersScoreTables();
 }
 
 void CourseDashboard::saveToFile(const std::string& pathTofile)
@@ -29,4 +31,21 @@ bool CourseDashboard::login(const std::string& email, const std::string& passwor
     AuthenticationProvider authenticationProvider;
 
     return authenticationProvider(*user, email, password);
+}
+
+void CourseDashboard::addScoreKeys(const std::vector<std::string> &scoreKeys)
+{
+    for(auto &k : scoreKeys)
+    {
+        userHandler_.addScoreKey(k);
+    }
+}
+
+void CourseDashboard::updateUserScoreByNick(std::string nick, std::string key, int points)
+{
+    if (!userHandler_.updateUserScoreByNick(nick, key, points))
+    {
+        std::cerr << "Update user: " << nick << " score failed.\n key:"
+                  << key <<  " points:" << points << "\n" ;
+    }
 }

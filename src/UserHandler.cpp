@@ -15,6 +15,8 @@ void UserHandler::showAll() const
 void UserHandler::createUser(const User &user)
 {
     users_.emplace_back(user);
+
+    users_.back().createScoreTable(scoreKeys_);
 }
 
 void UserHandler::deleteUserByNick(std::string nick)
@@ -65,4 +67,43 @@ void UserHandler::clearUserDatabase()
 Users& UserHandler::getUserDatabase()
 {
     return users_;
+}
+
+void UserHandler::addScoreKey(std::string key)
+{
+    if (!isKeyExisting(key))
+    {
+        scoreKeys_.emplace_back(key);
+        for(auto &u : users_)
+        {
+            u.updateUserScore(key, 0);
+        }
+    }
+}
+
+void UserHandler::createUsersScoreTables()
+{
+    for(auto &u : users_)
+    {
+        u.createScoreTable(scoreKeys_);
+    }
+}
+
+bool UserHandler::updateUserScoreByNick(std::string nick, std::string key, int points)
+{
+    if (isKeyExisting(key))
+    {
+        User* user = retriveUserByNick(nick);
+        if(user != nullptr)
+        {
+            user->updateUserScore(key, points);
+            return true;
+        }
+    }
+    return false;
+}
+
+bool UserHandler::isKeyExisting(std::string key)
+{
+    return std::find(scoreKeys_.begin(), scoreKeys_.end(), key) != scoreKeys_.end();
 }

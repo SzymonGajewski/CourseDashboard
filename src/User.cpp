@@ -78,3 +78,16 @@ std::string User::getEmail() const
 {
     return email_;
 }
+
+void User::updateUserScore(std::string key, int points)
+{
+    scoreTable_[key] = points;
+}
+
+void User::createScoreTable(std::vector<std::string> scoreKeys)
+{
+    for(auto e : scoreKeys)
+    {
+        scoreTable_.emplace(e, 0);
+    }
+}

@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <map>
 #include "nlohmann/json.hpp"
 
 class User
@@ -35,6 +36,9 @@ public:
 
     friend bool operator==(const User &lhs, const User& rhs);
 
+    void updateUserScore(std::string key, int poits);
+    void createScoreTable(std::vector<std::string> scoreKeys);
+
 private:
     std::string name_;
     std::string nick_;
@@ -43,6 +47,8 @@ private:
     std::string firecode_;
     std::string email_;
     std::string password_;
+
+    std::map<std::string, int> scoreTable_;
 
 };
 
