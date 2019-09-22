@@ -32,6 +32,13 @@ int main()
     cdb.showScoreTableByNick("Beth");
     cdb.showScoreTableByNick("test");
 
+    std::cout << "\nRANKING 1" << std::endl;
+    cdb.showRanking();
+
+    cdb.updateUserScoreByNick("Laura","Other", 1000);
+
+    std::cout << "\nRANKING 2" << std::endl;
+    cdb.showRanking();
 
     return 0;
 }

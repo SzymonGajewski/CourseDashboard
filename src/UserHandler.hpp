@@ -22,6 +22,7 @@ public:
     void createUsersScoreTables();
     bool updateUserScoreByNick(std::string nick, std::string key, int points);
     bool showScoreTableByNick(std::string nick);
+    void showRanking() const;
 
 private:
     std::vector<User> users_;

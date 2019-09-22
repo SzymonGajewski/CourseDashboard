@@ -82,6 +82,8 @@ std::string User::getEmail() const
 void User::updateUserScore(std::string key, int points)
 {
     scoreTable_[key] = points;
+
+    updateTotalPoints();
 }
 
 void User::createScoreTable(std::vector<std::string> scoreKeys)
@@ -90,6 +92,8 @@ void User::createScoreTable(std::vector<std::string> scoreKeys)
     {
         scoreTable_.emplace(e, 0);
     }
+
+    totalPoints_ = 0;
 }
 
 std::string User::scoreTableToString() const
@@ -109,4 +113,16 @@ std::string User::scoreTableToString() const
     }
     ss << std::endl;
     return ss.str();
+}
+
+int User::getTotalPoints() const
+{
+    return totalPoints_;
+}
+
+void User::updateTotalPoints()
+{
+    totalPoints_ = 0;
+    for(auto &e : scoreTable_)
+        totalPoints_ += e.second;
 }

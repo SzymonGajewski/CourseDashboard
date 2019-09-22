@@ -41,6 +41,8 @@ public:
 
     std::string scoreTableToString() const;
 
+    int getTotalPoints() const;
+
 private:
     std::string name_;
     std::string nick_;
@@ -51,7 +53,9 @@ private:
     std::string password_;
 
     std::map<std::string, int> scoreTable_;
+    int totalPoints_;
 
+    void updateTotalPoints();
 };
 
 using Users = std::vector<User>;

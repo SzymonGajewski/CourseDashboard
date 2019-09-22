@@ -57,3 +57,8 @@ void CourseDashboard::showScoreTableByNick(std::string nick)
         std::cerr << "User: " << nick << " doesn't exist.\n";
     }
 }
+
+void CourseDashboard::showRanking() const
+{
+    userHandler_.showRanking();
+}

@@ -2,6 +2,7 @@
 #include <stdexcept>
 #include <iostream>
 #include <algorithm>
+#include <iomanip>
 
 
 void UserHandler::showAll() const
@@ -117,4 +118,30 @@ bool UserHandler::showScoreTableByNick(std::string nick)
         return true;
     }
     return false;
+}
+
+void UserHandler::showRanking() const
+{
+    // Map will be automatically sorted by total point for given user in descending order
+    // multimap, because several users may have the same amount of points
+    std::multimap<int, std::string, std::greater<int>> usersRanking;
+    size_t maxNickLen = 0;
+    size_t maxPointsLen = 0;
+
+    for (auto &u : users_)
+    {
+        usersRanking.emplace(u.getTotalPoints(), u.getNick());
+        maxNickLen = std::max(maxNickLen, u.getNick().length());
+        maxPointsLen = std::max(maxPointsLen, std::to_string(u.getTotalPoints()).length());
+    }
+
+    for (auto &e : usersRanking)
+    {
+        std::cout << std::setfill('-')
+                  << std::left << std::setw(maxNickLen + 2) << e.second
+                  << "| "
+                  << std::setfill(' ')
+                  << std::right << std::setw(maxPointsLen) << e.first
+                  << std::endl;
+    }
 }
